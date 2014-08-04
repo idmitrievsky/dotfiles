@@ -10,19 +10,19 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'L9'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'zenorocha/dracula-theme'
 Plugin 'mhinz/vim-startify'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin 'sjl/gundo.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
 Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'vim-scripts/YankRing.vim'
+Plugin 'sjl/vitality.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -37,6 +37,8 @@ set wrap
 set formatoptions=rn1
 set colorcolumn=80
 set encoding=utf-8
+let g:tex_conceal = ""
+set noswapfile
 
 " Spaces & Tabs
 set tabstop=2 " number of visual spaces per TAB
@@ -92,8 +94,6 @@ inoremap <right> <nop>
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
-" highlight last inserted text
-nnoremap <leader>v V`]
 " split movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -136,6 +136,10 @@ let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" Latex
+nnoremap <leader>c :w<CR>:!rubber -sd --warn=all %<CR>
+noremap <leader>v :!open %:r.pdf &<CR><CR>
 
 " MacVim
 if has('gui_running')
